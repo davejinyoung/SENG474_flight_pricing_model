@@ -10,6 +10,13 @@ Using the **Airline Market Fare Prediction** dataset from Kaggle. Can be found h
 
 ---
 
+## Presentation slides
+here is the link to the google slides: https://docs.google.com/presentation/d/1IFuFPluQJ5lFuthGHWXlCjhUkKhDw8NjYl0lC_5uwIQ/edit?usp=sharing
+
+## Final Report
+here is the link to the google Doc: https://docs.google.com/document/d/1bQdOmW2MztFCjM7zrcbBvJdDePj22vr3TwkBCkkkI6Y/edit?usp=sharing
+converted to latex: 
+
 ## Team
 
 - **Dave Jung** — V00981459  
