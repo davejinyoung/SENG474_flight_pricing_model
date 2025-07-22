@@ -50,6 +50,7 @@ class AirlinePricePredictor:
         X_test_scaled = scaler.transform(X_test)
 
         # --- 5. Find the Optimal 'k' using the Validation Set ---
+        """
         print("\nFinding optimal k value...")
         k_range = range(1, 41)
         rmse_values = []
@@ -65,6 +66,7 @@ class AirlinePricePredictor:
         self.best_k = k_range[np.argmin(rmse_values)]
         print(f"Optimal k found: {self.best_k}")
 
+        
         # Plot the RMSE vs. K value graph
         plt.figure(figsize=(10, 6))
         plt.plot(k_range, rmse_values, marker='o', linestyle='--')
@@ -75,6 +77,8 @@ class AirlinePricePredictor:
         plt.legend()
         plt.grid(True)
         plt.show()
+        """
+        self.best_k = 3
 
         # --- 6. Train the Final Model ---
         self.scaler = StandardScaler()
