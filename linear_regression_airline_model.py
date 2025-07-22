@@ -218,6 +218,26 @@ class EnhancedAirlineFarePredictor:
         # Evaluate both models
         sklearn_metrics = self.evaluate_model(y_test, sklearn_pred, "Scikit-learn Model")
         manual_metrics = self.evaluate_model(y_test, manual_pred, "Manual Normal Equation Model")
+
+        # Measure prediction time per 1k rows for both models
+        n_test = X_test_scaled.shape[0]
+        n_repeats = 10
+        # Scikit-learn timing
+        import time
+        start = time.time()
+        for _ in range(n_repeats):
+            _ = self.sklearn_model.predict(X_test_scaled)
+        end = time.time()
+        avg_pred_time_sklearn = (end - start) / n_repeats / n_test * 1000  # seconds per 1k rows
+        # Manual timing
+        start = time.time()
+        for _ in range(n_repeats):
+            _ = self.predict_with_theta(X_test_scaled, self.theta)
+        end = time.time()
+        avg_pred_time_manual = (end - start) / n_repeats / n_test * 1000  # seconds per 1k rows
+        print(f"\nPrediction Time (per 1k rows/examples):")
+        print(f"  Scikit-learn Model: {avg_pred_time_sklearn:.6f} seconds")
+        print(f"  Manual Model:      {avg_pred_time_manual:.6f} seconds")
         
         # Store metrics
         self.model_metrics = {
